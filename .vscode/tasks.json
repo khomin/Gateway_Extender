@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "make all",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "all"
+            ],
+            "options": {
+				"cwd": "./build"
+			},
+            "group": "build",
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "make clean",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "clean"
+            ],
+            "options": {
+				"cwd": "./build"
+			},           
+            "group": "build",
+            "problemMatcher": "$gcc"
+        }
+    ]
+}

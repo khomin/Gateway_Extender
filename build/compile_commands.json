@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/media/khomin/D/PROJECTs/Linux/Gateway_extender/build",
+  "command": "/usr/bin/g++-7   -I/media/khomin/D/PROJECTs/Linux/Gateway_extender/src  -pthread -g   -std=c++14 -Wall -g -o CMakeFiles/Gateway_Extender.dir/app.cpp.o -c /media/khomin/D/PROJECTs/Linux/Gateway_extender/app.cpp",
+  "file": "/media/khomin/D/PROJECTs/Linux/Gateway_extender/app.cpp"
+},
+{
+  "directory": "/media/khomin/D/PROJECTs/Linux/Gateway_extender/build",
+  "command": "/usr/bin/g++-7   -I/media/khomin/D/PROJECTs/Linux/Gateway_extender/src  -pthread -g   -std=c++14 -Wall -g -o CMakeFiles/Gateway_Extender.dir/src/starter.cpp.o -c /media/khomin/D/PROJECTs/Linux/Gateway_extender/src/starter.cpp",
+  "file": "/media/khomin/D/PROJECTs/Linux/Gateway_extender/src/starter.cpp"
+},
+{
+  "directory": "/media/khomin/D/PROJECTs/Linux/Gateway_extender/build",
+  "command": "/usr/bin/g++-7   -I/media/khomin/D/PROJECTs/Linux/Gateway_extender/src  -pthread -g   -std=c++14 -Wall -g -o CMakeFiles/Gateway_Extender.dir/src/settings.cpp.o -c /media/khomin/D/PROJECTs/Linux/Gateway_extender/src/settings.cpp",
+  "file": "/media/khomin/D/PROJECTs/Linux/Gateway_extender/src/settings.cpp"
+},
+{
+  "directory": "/media/khomin/D/PROJECTs/Linux/Gateway_extender/build",
+  "command": "/usr/bin/g++-7   -I/media/khomin/D/PROJECTs/Linux/Gateway_extender/src  -pthread -g   -std=c++14 -Wall -g -o CMakeFiles/Gateway_Extender.dir/src/commandHandler.cpp.o -c /media/khomin/D/PROJECTs/Linux/Gateway_extender/src/commandHandler.cpp",
+  "file": "/media/khomin/D/PROJECTs/Linux/Gateway_extender/src/commandHandler.cpp"
+},
+{
+  "directory": "/media/khomin/D/PROJECTs/Linux/Gateway_extender/build",
+  "command": "/usr/bin/g++-7   -I/media/khomin/D/PROJECTs/Linux/Gateway_extender/src  -pthread -g   -std=c++14 -Wall -g -o CMakeFiles/Gateway_Extender.dir/src/commandReceiver.cpp.o -c /media/khomin/D/PROJECTs/Linux/Gateway_extender/src/commandReceiver.cpp",
+  "file": "/media/khomin/D/PROJECTs/Linux/Gateway_extender/src/commandReceiver.cpp"
+},
+{
+  "directory": "/media/khomin/D/PROJECTs/Linux/Gateway_extender/build",
+  "command": "/usr/bin/g++-7   -I/media/khomin/D/PROJECTs/Linux/Gateway_extender/src  -pthread -g   -std=c++14 -Wall -g -o CMakeFiles/Gateway_Extender.dir/src/commandPull.cpp.o -c /media/khomin/D/PROJECTs/Linux/Gateway_extender/src/commandPull.cpp",
+  "file": "/media/khomin/D/PROJECTs/Linux/Gateway_extender/src/commandPull.cpp"
+}
+]
