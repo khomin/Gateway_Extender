@@ -5,8 +5,9 @@
             "includePath": [
                 "/usr/include",
                 "usr/local/build",
-                "${workspaceFolder}/inc/",
-                "${workspaceFolder}/src/"
+                "${workspaceFolder}/inc/commandPull",
+                "${workspaceFolder}/inc/commandService",
+                "${workspaceFolder}/inc/settings"
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,

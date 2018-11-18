@@ -1,4 +1,4 @@
-#include "../inc/settings.h"
+#include "settings.h"
 
 namespace settings {
 
