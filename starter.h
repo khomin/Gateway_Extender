@@ -22,6 +22,8 @@
 using namespace boost::asio;
 using namespace boost::posix_time;
 
+namespace starter {
+
 class Starter
 {
 public:
@@ -35,5 +37,7 @@ private:
     // std::shared_ptr<commandService::CommandService> commandService;
     // std::shared_ptr<commandPull::CommandPull> commandPull;
 };
+
+}
 
 #endif

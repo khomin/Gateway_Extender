@@ -1,6 +1,3 @@
-#ifndef CONNECTION_CLIENT_H_
-#define CONNECTION_CLIENT_H_
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -15,6 +12,10 @@
 #include <boost/asio.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
+#include "commandPull/commandPull.h"
+
+#ifndef CONNECTION_CLIENT_H_
+#define CONNECTION_CLIENT_H_
 
 using namespace boost::asio;
 using namespace boost::posix_time;
@@ -25,41 +26,36 @@ class talk_to_client
 {
 public:
     talk_to_client();
-    std::string username() const;
+    ~talk_to_client();
+
     void answer_to_client();
-    void set_clients_changed();
     ip::tcp::socket &sock();
     bool timed_out() const;
-    void stop();
 
   private:
     void read_request();
     void process_request();
-    void on_login(const std::string &msg);
-    void on_ping();
-    void on_clients();
-    void write(const std::string &msg);
-    void update_clients_changed();
-
+    void stop();
   private:
     ip::tcp::socket sock_;
     enum
     {
         max_msg = 1024
     };
-    int already_read_;
     char buff_[max_msg];
-    bool started_;
-    std::string username_;
-    bool clients_changed_;
-    ptime last_ping;
+    std::string loginName;
+    ptime lastPing;
+    typedef boost::shared_ptr<talk_to_client> client_ptr;
+    typedef std::vector<client_ptr> array;
+
+    std::shared_ptr<commandPull::CommandPull> commandPull;
 };
 
-io_service service;
-typedef boost::shared_ptr<talk_to_client> client_ptr;
-typedef std::vector<client_ptr> array;
-array clients;
-boost::recursive_mutex cs;
+  static io_service service;
+  typedef boost::shared_ptr<talk_to_client> client_ptr;
+  typedef std::vector<client_ptr> array;
+  static array clients;
+  static boost::recursive_mutex cs;
 }
 
 #endif

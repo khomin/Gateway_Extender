@@ -8,10 +8,10 @@ set(CMAKE_CXX_FLAGS -pthread)
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 add_compile_options(-std=c++14 -Wall -g)
-include_directories(${PROJECT_SOURCE_DIR}./)
-include_directories(${PROJECT_SOURCE_DIR}/commandPull)
-include_directories(${PROJECT_SOURCE_DIR}/commandService)
+include_directories(${PROJECT_SOURCE_DIR}/)
 include_directories(${PROJECT_SOURCE_DIR}/settings)
+include_directories(${PROJECT_SOURCE_DIR}/commandService)
+#include_directories(${PROJECT_SOURCE_DIR}/commandPull)
 
 ##################################################
 ###		boost block								##
@@ -32,6 +32,8 @@ add_executable(${PROJECT_NAME}
 	./settings/settings.cpp
 	./commandService/commandService.cpp
 	./commandService/connectionClient.cpp
+	./commandPull/commandHandler.cpp
+	./commandPull/commandPull.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})

@@ -1,4 +1,4 @@
-#include "../inc/commandHandler.h"
+#include "commandHandler.h"
 
 namespace commandHandler
 {

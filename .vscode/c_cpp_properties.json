@@ -5,6 +5,7 @@
             "includePath": [
                 "/usr/include",
                 "usr/local/build",
+                "${workspaceFolder}/",
                 "${workspaceFolder}/inc/commandPull",
                 "${workspaceFolder}/inc/commandService",
                 "${workspaceFolder}/inc/settings"
