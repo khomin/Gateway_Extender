@@ -11,7 +11,8 @@ add_compile_options(-std=c++14 -Wall -g)
 include_directories(${PROJECT_SOURCE_DIR}/)
 include_directories(${PROJECT_SOURCE_DIR}/settings)
 include_directories(${PROJECT_SOURCE_DIR}/commandService)
-#include_directories(${PROJECT_SOURCE_DIR}/commandPull)
+include_directories(${PROJECT_SOURCE_DIR}/commandPull)
+include_directories(${PROJECT_SOURCE_DIR}/interfaces)
 
 ##################################################
 ###		boost block								##
@@ -34,6 +35,8 @@ add_executable(${PROJECT_NAME}
 	./commandService/connectionClient.cpp
 	./commandPull/commandHandler.cpp
 	./commandPull/commandPull.cpp
+	./interfaces/interfaceAbstract.cpp
+	./interfaces/interfaceSerial.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})

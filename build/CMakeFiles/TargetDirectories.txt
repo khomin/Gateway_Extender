@@ -1,5 +1,5 @@
-/media/khomin/D/PROJECTs/Linux/Gateway_extender/build/CMakeFiles/rebuild_cache.dir
-/media/khomin/D/PROJECTs/Linux/Gateway_extender/build/CMakeFiles/edit_cache.dir
-/media/khomin/D/PROJECTs/Linux/Gateway_extender/build/CMakeFiles/Gateway_Extender.dir
-/media/khomin/D/PROJECTs/Linux/Gateway_extender/build/CMakeFiles/package_source.dir
-/media/khomin/D/PROJECTs/Linux/Gateway_extender/build/CMakeFiles/package.dir
+/home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/rebuild_cache.dir
+/home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/edit_cache.dir
+/home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/Gateway_Extender.dir
+/home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/package_source.dir
+/home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/package.dir

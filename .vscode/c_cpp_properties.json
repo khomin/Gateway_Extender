@@ -8,6 +8,7 @@
                 "${workspaceFolder}/",
                 "${workspaceFolder}/inc/commandPull",
                 "${workspaceFolder}/inc/commandService",
+                "${workspaceFolder}/inc/interfaces",
                 "${workspaceFolder}/inc/settings"
             ],
             "browse": {

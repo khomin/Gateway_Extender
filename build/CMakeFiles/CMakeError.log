@@ -1,24 +1,24 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /media/khomin/D/PROJECTs/Linux/Gateway_extender/build/CMakeFiles/CMakeTmp
+Change Dir: /home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_b65db/fast"
-/usr/bin/make -f CMakeFiles/cmTC_b65db.dir/build.make CMakeFiles/cmTC_b65db.dir/build
-make[1]: Entering directory '/media/khomin/D/PROJECTs/Linux/Gateway_extender/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_b65db.dir/CheckSymbolExists.c.o
-/usr/bin/gcc-7    -o CMakeFiles/cmTC_b65db.dir/CheckSymbolExists.c.o   -c /media/khomin/D/PROJECTs/Linux/Gateway_extender/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_b65db
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b65db.dir/link.txt --verbose=1
-/usr/bin/gcc-7      -rdynamic CMakeFiles/cmTC_b65db.dir/CheckSymbolExists.c.o  -o cmTC_b65db 
-CMakeFiles/cmTC_b65db.dir/CheckSymbolExists.c.o: In function `main':
+Run Build Command:"/usr/bin/make" "cmTC_5f016/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5f016.dir/build.make CMakeFiles/cmTC_5f016.dir/build
+make[1]: Entering directory '/home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5f016.dir/CheckSymbolExists.c.o
+/usr/bin/gcc-7    -o CMakeFiles/cmTC_5f016.dir/CheckSymbolExists.c.o   -c /home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_5f016
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5f016.dir/link.txt --verbose=1
+/usr/bin/gcc-7      -rdynamic CMakeFiles/cmTC_5f016.dir/CheckSymbolExists.c.o  -o cmTC_5f016 
+CMakeFiles/cmTC_5f016.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_b65db.dir/build.make:86: recipe for target 'cmTC_b65db' failed
-make[1]: *** [cmTC_b65db] Error 1
-make[1]: Leaving directory '/media/khomin/D/PROJECTs/Linux/Gateway_extender/build/CMakeFiles/CMakeTmp'
-Makefile:121: recipe for target 'cmTC_b65db/fast' failed
-make: *** [cmTC_b65db/fast] Error 2
+CMakeFiles/cmTC_5f016.dir/build.make:86: recipe for target 'cmTC_5f016' failed
+make[1]: *** [cmTC_5f016] Error 1
+make[1]: Leaving directory '/home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_5f016/fast' failed
+make: *** [cmTC_5f016/fast] Error 2
 
-File /media/khomin/D/PROJECTs/Linux/Gateway_extender/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
@@ -34,22 +34,22 @@ int main(int argc, char** argv)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /media/khomin/D/PROJECTs/Linux/Gateway_extender/build/CMakeFiles/CMakeTmp
+Change Dir: /home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_dbb6b/fast"
-/usr/bin/make -f CMakeFiles/cmTC_dbb6b.dir/build.make CMakeFiles/cmTC_dbb6b.dir/build
-make[1]: Entering directory '/media/khomin/D/PROJECTs/Linux/Gateway_extender/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_dbb6b.dir/CheckFunctionExists.c.o
-/usr/bin/gcc-7   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_dbb6b.dir/CheckFunctionExists.c.o   -c /usr/local/share/cmake-3.13/Modules/CheckFunctionExists.c
-Linking C executable cmTC_dbb6b
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dbb6b.dir/link.txt --verbose=1
-/usr/bin/gcc-7  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_dbb6b.dir/CheckFunctionExists.c.o  -o cmTC_dbb6b -lpthreads 
+Run Build Command:"/usr/bin/make" "cmTC_096d0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_096d0.dir/build.make CMakeFiles/cmTC_096d0.dir/build
+make[1]: Entering directory '/home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_096d0.dir/CheckFunctionExists.c.o
+/usr/bin/gcc-7   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_096d0.dir/CheckFunctionExists.c.o   -c /usr/local/share/cmake-3.12/Modules/CheckFunctionExists.c
+Linking C executable cmTC_096d0
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_096d0.dir/link.txt --verbose=1
+/usr/bin/gcc-7  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_096d0.dir/CheckFunctionExists.c.o  -o cmTC_096d0 -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_dbb6b.dir/build.make:86: recipe for target 'cmTC_dbb6b' failed
-make[1]: *** [cmTC_dbb6b] Error 1
-make[1]: Leaving directory '/media/khomin/D/PROJECTs/Linux/Gateway_extender/build/CMakeFiles/CMakeTmp'
-Makefile:121: recipe for target 'cmTC_dbb6b/fast' failed
-make: *** [cmTC_dbb6b/fast] Error 2
+CMakeFiles/cmTC_096d0.dir/build.make:86: recipe for target 'cmTC_096d0' failed
+make[1]: *** [cmTC_096d0] Error 1
+make[1]: Leaving directory '/home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_096d0/fast' failed
+make: *** [cmTC_096d0/fast] Error 2
 
 

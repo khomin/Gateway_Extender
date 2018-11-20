@@ -1,25 +1,5 @@
 {
   "type": "gatewayExtender",
   "version": "0.0",
-  "operation": "setconfig",
-  "devices": [
-      {
-        "type":"*"
-      }
-    ],
-    "port": [
-      {
-        "port_1": [
-        {
-          "name": "ttyACM0",
-            "propeprty": [
-              {
-                "type": "serial",
-                "baudrate":"115200"
-              }  
-            ]        
-          }
-      ]
-    }
-  ]
+  "operation": "ping"
 }
