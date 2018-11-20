@@ -31,13 +31,13 @@ namespace commandPull
                 Value &commandDoc = document["type"];
                 if (std::string("gatewayExtender").compare(commandDoc.GetString()) == 0) {
                     Document jsonExportDoc;
-                    Document::AllocatorType &a = jsonExportDoc.GetAllocator();
+                    Document::AllocatorType& allocatorDoc = jsonExportDoc.GetAllocator();
                     commandDoc = document["version"];
                     if (std::string("0.0").compare(commandDoc.GetString()) == 0) {
                         commandDoc = document["operation"];
                         // operations
                         if (std::string("ping").compare(commandDoc.GetString()) == 0) {
-                            jsonExportDoc.SetObject().AddMember("ping", "normal", a);
+                            jsonExportDoc.SetObject().AddMember("ping", "normal", allocatorDoc);
                             rapidjson::StringBuffer buffer;
                             rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
                             jsonExportDoc.Accept(writer);
@@ -61,7 +61,7 @@ namespace commandPull
                                 commandHandler = std::make_shared<commandHandler::CommandHandler>(tIoProperty);
                             }
                             if(isSetConfigNormal) {
-                                jsonExportDoc.SetObject().AddMember("setconfig", "normal", a);
+                                jsonExportDoc.SetObject().AddMember("setconfig", "normal", allocatorDoc);
                                 rapidjson::StringBuffer buffer;
                                 rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
                                 jsonExportDoc.Accept(writer);
@@ -88,7 +88,7 @@ namespace commandPull
                                     commandHandler->addTranssmitedBytes(packetData);
                                 }
                                 if(isSetConfigNormal) {
-                                    jsonExportDoc.SetObject().AddMember("transmitData", "normal", a);
+                                    jsonExportDoc.SetObject().AddMember("transmitData", "normal", allocatorDoc);
                                     rapidjson::StringBuffer buffer;
                                     rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
                                     jsonExportDoc.Accept(writer);
@@ -97,7 +97,7 @@ namespace commandPull
                                     res.first = true;
                                 }
                             } else {
-                                jsonExportDoc.SetObject().AddMember("transmitData", "conenction is closed", a);
+                                jsonExportDoc.SetObject().AddMember("transmitData", "conenction is closed", allocatorDoc);
                                 rapidjson::StringBuffer buffer;
                                 rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
                                 jsonExportDoc.Accept(writer);
@@ -112,7 +112,7 @@ namespace commandPull
                             } else {
                                 messageReply.SetString(commandHandler->getStatusIo().c_str(), commandHandler->getStatusIo().length());
                             }
-                            jsonExportDoc.SetObject().AddMember("getStatus", messageReply, a);
+                            jsonExportDoc.SetObject().AddMember("getStatus", messageReply, allocatorDoc);
                             rapidjson::StringBuffer buffer;
                             rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
                             jsonExportDoc.Accept(writer);
@@ -121,13 +121,14 @@ namespace commandPull
                             res.first = true;
                         } else if (std::string("getStatistics").compare(commandDoc.GetString()) == 0) {
                             Value messageReply;
+                            // messageReply.
                             if(commandHandler.get() == nullptr) {
                                 messageReply.SetString("no configured");
                             } else {
                                 const std::string stats = commandHandler->getStatistics();
-                                messageReply.SetString(stats.c_str(), stats.length());
+                                messageReply.SetString(stats.c_str(), stats.length(), allocatorDoc);
                             }
-                            jsonExportDoc.SetObject().AddMember("getStatistics", messageReply, a);
+                            jsonExportDoc.SetObject().AddMember("getStatistics", messageReply, allocatorDoc);
                             rapidjson::StringBuffer buffer;
                             rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
                             jsonExportDoc.Accept(writer);

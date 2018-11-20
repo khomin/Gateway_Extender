@@ -1,5 +1,0 @@
-/home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/rebuild_cache.dir
-/home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/edit_cache.dir
-/home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/Gateway_Extender.dir
-/home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/package_source.dir
-/home/khomin/Documents/PROJECTs/Gateway_Extender/build/CMakeFiles/package.dir

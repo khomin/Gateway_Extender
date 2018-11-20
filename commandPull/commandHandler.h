@@ -27,15 +27,20 @@ class CommandHandler
       std::vector<uint8_t> dataPacket;
     }sData;
     
-    struct {
+    typedef struct {
       int packetSended;
-      int packetLosed; 
-    }statistics;
+      int packetSendError; 
+      int sendAttemptCounter;
+    }sStatistics;
 
-    static void handlerFunction(std::shared_ptr<InterfaceAbstract> & handler, std::shared_ptr<std::vector<sData>> sendData);
+    static void handlerFunction(std::shared_ptr<InterfaceAbstract> & handler, 
+        std::shared_ptr<std::vector<sData>> & sendData, 
+        std::shared_ptr<sStatistics> & stats
+    );
     std::shared_ptr<std::vector<sData>> data;
     std::shared_ptr<InterfaceAbstract> ioHandler;
     std::shared_ptr<std::thread> handlerThread;
+    std::shared_ptr<sStatistics> statistics;
 };
 }
 

@@ -37,8 +37,7 @@ bool InterfaceSerial::setProperty(const sInterfaceProperty & interface) {
 }
 
 bool InterfaceSerial::openConnection() {
-    setProperty(property);
-    return isConnected;
+    return setProperty(property);
 }
 
 bool InterfaceSerial::remove() {
@@ -52,12 +51,17 @@ bool InterfaceSerial::remove() {
 }
 
 bool InterfaceSerial::writeData(uint8_t* data, uint16_t len) {
-    isConnected = (bool) write(ioDescription, data, len);
+    if(ioDescription != FD_NOT_OPEN) {
+        isConnected = (bool) write(ioDescription, data, len);
+    }
     return isConnected;
 }
 
 int InterfaceSerial::readData(uint8_t* data) {
-    return read(ioDescription, data, std::numeric_limits<uint16_t>::max());
+    if(ioDescription != FD_NOT_OPEN) {
+        return read(ioDescription, data, std::numeric_limits<uint16_t>::max());
+    }
+    return isConnected;
 }
 
 bool InterfaceSerial::getIsConnected() {
