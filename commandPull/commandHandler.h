@@ -17,8 +17,23 @@ class CommandHandler
     CommandHandler(const InterfaceAbstract::sInterfaceProperty & interface);
     ~CommandHandler();    
 
+    void addTranssmitedBytes(std::vector<uint8_t> & dataPacket);
+    std::string getStatusIo() const;
+    std::string getStatistics() const;
+
   private:
-    static void handlerFunction(std::shared_ptr<InterfaceAbstract> & handler);
+    typedef struct {
+      std::string header;
+      std::vector<uint8_t> dataPacket;
+    }sData;
+    
+    struct {
+      int packetSended;
+      int packetLosed; 
+    }statistics;
+
+    static void handlerFunction(std::shared_ptr<InterfaceAbstract> & handler, std::shared_ptr<std::vector<sData>> sendData);
+    std::shared_ptr<std::vector<sData>> data;
     std::shared_ptr<InterfaceAbstract> ioHandler;
     std::shared_ptr<std::thread> handlerThread;
 };

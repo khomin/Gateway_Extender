@@ -19,6 +19,7 @@ class InterfaceSerial : public InterfaceAbstract {
     InterfaceSerial(const InterfaceAbstract::sInterfaceProperty & property);
     ~InterfaceSerial();    
     bool setProperty(const sInterfaceProperty & interface) override;
+    bool openConnection() override;
     bool remove() override;
     bool writeData(uint8_t* data, uint16_t len) override;
     int readData(uint8_t* data) override;
@@ -28,6 +29,7 @@ class InterfaceSerial : public InterfaceAbstract {
   private:
     sInterfaceProperty property;
     struct termios tty;
+    int ioDescription;
     bool isConnected;
 };
 

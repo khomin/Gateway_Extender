@@ -51,16 +51,16 @@ namespace commandPull
                                 InterfaceAbstract::sInterfaceProperty tIoProperty;
                                 Value obj = portIter->GetObject();
                                 Value tPortObj = obj["port_1"].GetObject();
-                                Value tProperty = tPortObj["propeprty"].GetObject();
+                                Value tProperty = tPortObj["property"].GetObject();
                                 tIoProperty.portName = tProperty["name"].GetString();
                                 tIoProperty.portType = tProperty["type"].GetString();
                                 tIoProperty.portBaudrate = tProperty["baudrate"].GetString();
                                 isSetConfigNormal = true;
                                 // create command hander and interface
+                                commandHandler.reset();
                                 commandHandler = std::make_shared<commandHandler::CommandHandler>(tIoProperty);
                             }
                             if(isSetConfigNormal) {
-                                Document::AllocatorType &a = jsonExportDoc.GetAllocator();
                                 jsonExportDoc.SetObject().AddMember("setconfig", "normal", a);
                                 rapidjson::StringBuffer buffer;
                                 rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
@@ -70,10 +70,49 @@ namespace commandPull
                                 res.first = true;
                             }
                         } else if (std::string("transmitData").compare(commandDoc.GetString()) == 0) {
-
+                            Value portArray = document["port"].GetArray();
+                            if(commandHandler.get() != nullptr) {
+                                bool isSetConfigNormal = false;
+                                for(auto portIter = portArray.Begin(); portIter != portArray.End(); portIter++) {
+                                    std::vector<uint8_t>packetData;
+                                    Value obj = portIter->GetObject();
+                                    Value tPortObj = obj["port_1"].GetObject();
+                                    Value packetObj = tPortObj["packet"].GetObject();
+                                    std::string packetHeader = packetObj["header"].GetString();
+                                    Value tRawDataArray = packetObj["data"].GetArray();
+                                    for(auto rawBytesPacketIter = tRawDataArray.Begin(); rawBytesPacketIter != tRawDataArray.End(); rawBytesPacketIter++) {
+                                        std::string hexByte = rawBytesPacketIter->GetString();
+                                        packetData.push_back((uint8_t)std::stoul(hexByte, 0, 16));
+                                        isSetConfigNormal = true;
+                                    }
+                                    commandHandler->addTranssmitedBytes(packetData);
+                                }
+                                if(isSetConfigNormal) {
+                                    jsonExportDoc.SetObject().AddMember("transmitData", "normal", a);
+                                    rapidjson::StringBuffer buffer;
+                                    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+                                    jsonExportDoc.Accept(writer);
+                                    std::string json = buffer.GetString();
+                                    res.second = json;
+                                    res.first = true;
+                                }
+                            } else {
+                                jsonExportDoc.SetObject().AddMember("transmitData", "conenction is closed", a);
+                                rapidjson::StringBuffer buffer;
+                                rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+                                jsonExportDoc.Accept(writer);
+                                std::string json = buffer.GetString();
+                                res.second = json;
+                                res.first = true;
+                            }
                         } else if (std::string("getStatus").compare(commandDoc.GetString()) == 0) {
-                            Document::AllocatorType &a = jsonExportDoc.GetAllocator();
-                            jsonExportDoc.SetObject().AddMember("getStatus", "normal", a);
+                            Value messageReply;
+                            if(commandHandler.get() == nullptr) {
+                                messageReply.SetString("no configured");
+                            } else {
+                                messageReply.SetString(commandHandler->getStatusIo().c_str(), commandHandler->getStatusIo().length());
+                            }
+                            jsonExportDoc.SetObject().AddMember("getStatus", messageReply, a);
                             rapidjson::StringBuffer buffer;
                             rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
                             jsonExportDoc.Accept(writer);
@@ -81,8 +120,14 @@ namespace commandPull
                             res.second = json;
                             res.first = true;
                         } else if (std::string("getStatistics").compare(commandDoc.GetString()) == 0) {
-                            Document::AllocatorType &a = jsonExportDoc.GetAllocator();
-                            jsonExportDoc.SetObject().AddMember("getStatistics", "normal", a);
+                            Value messageReply;
+                            if(commandHandler.get() == nullptr) {
+                                messageReply.SetString("no configured");
+                            } else {
+                                const std::string stats = commandHandler->getStatistics();
+                                messageReply.SetString(stats.c_str(), stats.length());
+                            }
+                            jsonExportDoc.SetObject().AddMember("getStatistics", messageReply, a);
                             rapidjson::StringBuffer buffer;
                             rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
                             jsonExportDoc.Accept(writer);
@@ -101,21 +146,4 @@ namespace commandPull
         }
         return res;
     }
-    } // namespace commandPull
-
-    // // d.Parse(json);
-
-    // // 2. Modify it by DOM.
-
-    // Value yy;
-    // yy.SetString()
-    // Value& s = d["stars"];
-    // s.SetInt(s.GetInt() + 1);
-
-    // // 3. Stringify the DOM
-    // StringBuffer buffer;
-    // Writer<StringBuffer> writer(buffer);
-    // d.Accept(writer);
-
-    // Output {"project":"rapidjson","stars":11}
-    // std::cout << buffer.GetString() << std::endl;
+    }

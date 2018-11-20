@@ -1,0 +1,5 @@
+{
+  "type": "gatewayExtender",
+  "version": "0.0",
+  "operation": "getStatus"
+}

@@ -6,7 +6,7 @@
     {
     "port_1":
       {
-      "propeprty":
+      "property":
         {
           "name": "ttyACM0",
           "type": "serial",

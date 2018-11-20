@@ -20,6 +20,7 @@ class InterfaceAbstract
   }sInterfaceProperty;
 
   virtual bool setProperty(const sInterfaceProperty & interface) = 0;
+  virtual bool openConnection() = 0;
   virtual bool remove() = 0;
   virtual bool writeData(uint8_t* data, uint16_t len) = 0;
   virtual int readData(uint8_t * data) = 0;
