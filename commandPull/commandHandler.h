@@ -7,6 +7,7 @@
 #include <chrono>
 #include <thread>
 #include <mutex>
+#include <future>
 #include "interfaces/interfaceAbstract.h"
 
 namespace commandHandler
@@ -17,7 +18,7 @@ class CommandHandler
     CommandHandler(const InterfaceAbstract::sInterfaceProperty & interface);
     ~CommandHandler();    
 
-    void addTranssmitedBytes(std::vector<uint8_t> & dataPacket);
+    std::future<int> addTranssmitedBytes(std::vector<uint8_t> & dataPacket);
     std::string getStatusIo() const;
     std::string getStatistics() const;
 
@@ -31,16 +32,19 @@ class CommandHandler
       int packetSended;
       int packetSendError; 
       int sendAttemptCounter;
+      int lastSendedByteCount;
     }sStatistics;
 
     static void handlerFunction(std::shared_ptr<InterfaceAbstract> & handler, 
         std::shared_ptr<std::vector<sData>> & sendData, 
-        std::shared_ptr<sStatistics> & stats
+        std::shared_ptr<sStatistics> & stats,
+        bool & flagDataIsSended
     );
     std::shared_ptr<std::vector<sData>> data;
     std::shared_ptr<InterfaceAbstract> ioHandler;
     std::shared_ptr<std::thread> handlerThread;
     std::shared_ptr<sStatistics> statistics;
+    bool flagDataIsSended;
 };
 }
 

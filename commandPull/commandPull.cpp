@@ -59,8 +59,7 @@ namespace commandPull
                                 // create command hander and interface
                                 commandHandler.reset();
                                 commandHandler = std::make_shared<commandHandler::CommandHandler>(tIoProperty);
-                            }
-                            if(isSetConfigNormal) {
+                                // make reply
                                 jsonExportDoc.SetObject().AddMember("setconfig", "normal", allocatorDoc);
                                 rapidjson::StringBuffer buffer;
                                 rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
@@ -83,12 +82,13 @@ namespace commandPull
                                     for(auto rawBytesPacketIter = tRawDataArray.Begin(); rawBytesPacketIter != tRawDataArray.End(); rawBytesPacketIter++) {
                                         std::string hexByte = rawBytesPacketIter->GetString();
                                         packetData.push_back((uint8_t)std::stoul(hexByte, 0, 16));
-                                        isSetConfigNormal = true;
                                     }
-                                    commandHandler->addTranssmitedBytes(packetData);
-                                }
-                                if(isSetConfigNormal) {
-                                    jsonExportDoc.SetObject().AddMember("transmitData", "normal", allocatorDoc);
+                                    auto replyHandle = commandHandler->addTranssmitedBytes(packetData);
+                                    int lenByteWrited = replyHandle.get();
+                                    std::string resultMessage = "sended=" + std::to_string(lenByteWrited);
+                                    Value messageReply;
+                                    messageReply.SetString(resultMessage.c_str(), resultMessage.length());
+                                    jsonExportDoc.SetObject().AddMember("transmitData", messageReply, allocatorDoc);
                                     rapidjson::StringBuffer buffer;
                                     rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
                                     jsonExportDoc.Accept(writer);

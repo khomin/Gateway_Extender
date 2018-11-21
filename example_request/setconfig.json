@@ -8,7 +8,7 @@
       {
       "property":
         {
-          "name": "ttyACM0",
+          "name": "/dev/ttyACM0",
           "type": "serial",
           "baudrate": "115200"
         }

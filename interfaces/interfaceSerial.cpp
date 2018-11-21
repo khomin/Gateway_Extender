@@ -20,8 +20,13 @@ bool InterfaceSerial::setProperty(const sInterfaceProperty & interface) {
     }
     ioDescription = open(interface.portName.c_str(), O_RDWR | O_NOCTTY | O_NDELAY);
     if(ioDescription != FD_NOT_OPEN) {
-        cfsetispeed(&tty, B115200);    // set baud rates
-        cfsetospeed(&tty, B115200);
+        switch(std::stoi(interface.portBaudrate)) {
+            case 4800:  cfsetispeed(&tty, B4800); break;
+            case 9600:  cfsetispeed(&tty, B9600); break;
+            case 19200: cfsetispeed(&tty, B19200); break;
+            case 115200: cfsetispeed(&tty, B115200); break;
+            default: cfsetispeed(&tty, B115200); break;
+        }
         tty.c_cflag &= ~PARENB;    // set no parity, stop bits, data bits
         tty.c_cflag &= ~CSTOPB;
         tty.c_cflag &= ~CSIZE;
